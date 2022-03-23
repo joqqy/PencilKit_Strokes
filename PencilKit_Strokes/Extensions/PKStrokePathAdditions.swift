@@ -9,6 +9,7 @@
 
 import PencilKit
 
+/*
 extension PKStrokePath {
     
   func parametricValue(_ parametricValue: CGFloat, offsetBy step: InterpolatedSlice.Stride) -> CGFloat {
@@ -31,3 +32,4 @@ extension PKStrokePath {
   }
     
 }
+*/

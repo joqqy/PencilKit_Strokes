@@ -9,6 +9,8 @@
 
 import PencilKit
 
+/*
+
 extension CGPoint {
     
     var length: CGFloat { sqrt(x * x + y * y) }
@@ -89,3 +91,4 @@ extension PKStroke {
         return frechetDistance
     }
 }
+*/

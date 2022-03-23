@@ -11,8 +11,8 @@ import PencilKit
 class ViewController: UIViewController, PKCanvasViewDelegate {
     
     var canvasView: PKCanvasView?
-    
     var animatingStroke: PKStroke?
+    var gestureRecognizer: UIGestureRecognizer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,54 +32,61 @@ class ViewController: UIViewController, PKCanvasViewDelegate {
         canvasView.delegate = self
         canvasView.becomeFirstResponder()
         
+        self.gestureRecognizer = canvasView.drawingGestureRecognizer
+        self.gestureRecognizer?.addTarget(self, action: #selector(gestureAction))
+        
         view.addSubview(canvasView)
     }
     
+    @objc
+    func gestureAction() {
+        
+        switch self.gestureRecognizer?.state
+        {
+        case .began:
+            print(".began")
+            
+        case .changed:
+            print(".changed")
+            
+        case .ended:
+            print(".ended")
+            
+        case .cancelled:
+            print(".cancelled")
+            
+        default:
+            break
+        }
+    }
+    
+    func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {}
+    
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        
+//        for stroke in canvasView.drawing.strokes {
 
-//        let nextStrokeIndex: Int = canvasView.drawing.strokes.count
-//        print("nextStrokeIndex: \(nextStrokeIndex)")
+            // Getting the actual points on the path
+            // ref: https://developer.apple.com/videos/play/wwdc2020/10148/ timestamp: 7:55
+            // see WWDC2020 example Handwriting tutor, TextGenerator, method loadAndSplitDrawing(...)
+            
+//            var newPoints = [PKStrokePoint]()
+//            for parametricValue in stroke.path.indices {
+//
+//                //print (stroke.path.interpolatedPoint(at: CGFloat(parametricValue)))
+//                let strokePoint = stroke.path.interpolatedPoint(at: CGFloat(parametricValue))
+//                newPoints.append(strokePoint)
+//            }
+//
+//            print("newPoints.count: \(newPoints.count)")
+//        }
+
     }
     
     func canvasViewDidFinishRendering(_ canvasView: PKCanvasView) {
-    }
-    
-    func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
-        
-//        let strokes: [PKStroke] = canvasView.drawing.strokes
-//        print("strokes: \(strokes.count)")
-//        for i in strokes {
-//            print(i)
-//        }
         
         for stroke in canvasView.drawing.strokes {
-            
-//            var newPoints = [PKStrokePoint]()
-//            stroke.path.forEach { point in
-//
-//                let newPoint = PKStrokePoint(location: point.location,
-//                                             timeOffset: point.timeOffset,
-//                                             size: point.size,
-//                                             opacity: point.opacity,
-//                                             force: point.force,
-//                                             azimuth: point.azimuth,
-//                                             altitude: point.altitude)
-//
-//                newPoints.append(newPoint)
-//            }
-//
-//            if newPoints.count > 0 {
-//                print("location:    \(String(describing: newPoints.first?.location))")
-//                print("timeOffset:  \(String(describing: newPoints.first?.timeOffset))")
-//                print("size:        \(String(describing: newPoints.first?.size))")
-//                print("opacity:     \(String(describing: newPoints.first?.opacity))")
-//                print("force:       \(String(describing: newPoints.first?.force))")
-//                print("azimuth:     \(String(describing: newPoints.first?.azimuth))")
-//                print("altitude:    \(String(describing: newPoints.first?.altitude))")
-//            }
-//
-            // Getting the actual points on the path
-            // ref: https://developer.apple.com/videos/play/wwdc2020/10148/ timestamp: 7:55
+        
             var newPoints = [PKStrokePoint]()
             for parametricValue in stroke.path.indices {
                 
@@ -91,9 +98,32 @@ class ViewController: UIViewController, PKCanvasViewDelegate {
             print("newPoints.count: \(newPoints.count)")
         }
         
+        canvasView.drawing = PKDrawing()
+        
+    }
+    
+    func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
+
+//        for stroke in canvasView.drawing.strokes {
+//
+//            // Getting the actual points on the path
+//            // ref: https://developer.apple.com/videos/play/wwdc2020/10148/ timestamp: 7:55
+//            // see WWDC2020 example Handwriting tutor, TextGenerator, method loadAndSplitDrawing(...)
+//
+//            var newPoints = [PKStrokePoint]()
+//            for parametricValue in stroke.path.indices {
+//
+//                //print (stroke.path.interpolatedPoint(at: CGFloat(parametricValue)))
+//                let strokePoint = stroke.path.interpolatedPoint(at: CGFloat(parametricValue))
+//                newPoints.append(strokePoint)
+//            }
+//
+//            print("newPoints.count: \(newPoints.count)")
+//        }
+        
         //canvasView.drawing = PKDrawing()
         //canvasView.drawing.strokes.removeAll()
-        print("canvasView.drawing.strokes.count: \(canvasView.drawing.strokes.count)")
+//        print("canvasView.drawing.strokes.count: \(canvasView.drawing.strokes.count)")
     }
 }
 
