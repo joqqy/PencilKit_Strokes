@@ -13,6 +13,8 @@
 		E262771A27EBAFAF0068D011 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E262771827EBAFAF0068D011 /* Main.storyboard */; };
 		E262771C27EBAFD20068D011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E262771B27EBAFD20068D011 /* Assets.xcassets */; };
 		E262771F27EBAFD20068D011 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E262771D27EBAFD20068D011 /* LaunchScreen.storyboard */; };
+		E262772827EBB2350068D011 /* PKStrokePathAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E262772727EBB2350068D011 /* PKStrokePathAdditions.swift */; };
+		E262772A27EBB2660068D011 /* PKStrokeMatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E262772927EBB2660068D011 /* PKStrokeMatching.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		E262771B27EBAFD20068D011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E262771E27EBAFD20068D011 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E262772027EBAFD20068D011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E262772727EBB2350068D011 /* PKStrokePathAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKStrokePathAdditions.swift; sourceTree = "<group>"; };
+		E262772927EBB2660068D011 /* PKStrokeMatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKStrokeMatching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +63,22 @@
 				E262771227EBAFAF0068D011 /* AppDelegate.swift */,
 				E262771427EBAFAF0068D011 /* SceneDelegate.swift */,
 				E262771627EBAFAF0068D011 /* ViewController.swift */,
+				E262772627EBB2040068D011 /* Extensions */,
 				E262771827EBAFAF0068D011 /* Main.storyboard */,
 				E262771B27EBAFD20068D011 /* Assets.xcassets */,
 				E262771D27EBAFD20068D011 /* LaunchScreen.storyboard */,
 				E262772027EBAFD20068D011 /* Info.plist */,
 			);
 			path = PencilKit_Strokes;
+			sourceTree = "<group>";
+		};
+		E262772627EBB2040068D011 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E262772927EBB2660068D011 /* PKStrokeMatching.swift */,
+				E262772727EBB2350068D011 /* PKStrokePathAdditions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E262771727EBAFAF0068D011 /* ViewController.swift in Sources */,
+				E262772A27EBB2660068D011 /* PKStrokeMatching.swift in Sources */,
+				E262772827EBB2350068D011 /* PKStrokePathAdditions.swift in Sources */,
 				E262771327EBAFAF0068D011 /* AppDelegate.swift in Sources */,
 				E262771527EBAFAF0068D011 /* SceneDelegate.swift in Sources */,
 			);
